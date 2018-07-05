@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+    <div>
+        <li><a href="{% url 'blog:blog_title' %}">BLOG</a></li>
+            {% if user.is_authenticated %}
+        <li><a href="#">{{ user.username　}}</a> </li>
+        <li><a href="{% url 'account:user_logout' %}">Logout</a> </li>
+            {% else%}
+
+        <li><a href="{% url 'account:user_login' %}">LOGIN</a></li>
+            {% endif%}
+    </div>
+
+
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
